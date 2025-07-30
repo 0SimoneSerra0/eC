@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/src/app/components/imagesview/ImagesView.tsx"],"sourcesContent":["\n\nexport function ImagesView( props : { imgs : String[] } ) : React.ReactNode{\n\n    return(\n        <div className=\"bg-black w-[100vw] h-[max(70vh,20rem)] max-w-[var(--max-w)] max-h-[calc(var(--max-h)*60/100)]\">\n\n        </div>\n    );\n}"],"names":[],"mappings":";;;;;AAEO,SAAS,WAAY,KAA2B;IAEnD,qBACI,8OAAC;QAAI,WAAU;;;;;;AAIvB","debugId":null}},
+    {"offset": {"line": 36, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/src/app/page.tsx"],"sourcesContent":["import { ImagesView } from \"./components/imagesview/ImagesView\";\n\n\nexport default function Home() {\n  console.log(\"Ciao\");\n\n  const { data, error } = useQuery({\n    queryKey: [\"products\"],\n    queryFn: () => getProducts(),\n  });\n\n  console.log(\"Ciao\\n\", data)\n  if(error) console.log(\"ERRORE\")\n\n  return (\n    <div className=\"w-fit\">\n      <ImagesView imgs={[\"\"]} />\n\n        {/* {JSON.stringify(data)} */}\n    </div>\n\n  );\n}\n"],"names":[],"mappings":";;;;AAAA;;;AAGe,SAAS;IACtB,QAAQ,GAAG,CAAC;IAEZ,MAAM,EAAE,IAAI,EAAE,KAAK,EAAE,GAAG,SAAS;QAC/B,UAAU;YAAC;SAAW;QACtB,SAAS,IAAM;IACjB;IAEA,QAAQ,GAAG,CAAC,UAAU;IACtB,IAAG,OAAO,QAAQ,GAAG,CAAC;IAEtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC,qJAAA,CAAA,aAAU;YAAC,MAAM;gBAAC;aAAG;;;;;;;;;;;AAM5B","debugId":null}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/src/app/components/imagesview/ImagesView.tsx"],"sourcesContent":["\"use client\";\nimport { useQuery } from \"@tanstack/react-query\"\nimport { getProducts } from \"@/lib/api/api\";\n\n\nexport function ImagesView(props: { imgs: String[] }) {\n\n    const { data, error } = useQuery({\n        queryKey: [\"products\"],\n        queryFn: () => getProducts(),\n    });\n\n    if (error) console.log(\"ERROR\");\n\n    return (\n        <div className=\"bg-black text-white w-[100vw] h-[max(70vh,20rem)] max-w-[var(--max-w)] max-h-[calc(var(--max-h)*60/100)]\">\n            {JSON.stringify(data)}\n        </div>\n    );\n}"],"names":[],"mappings":";;;;AACA;;;;;;;;AADA;;;AAKO,SAAS,WAAW,KAAyB;;IAEhD,MAAM,EAAE,IAAI,EAAE,KAAK,EAAE,GAAG,CAAA,GAAA,8KAAA,CAAA,WAAQ,AAAD,EAAE;QAC7B,UAAU;YAAC;SAAW;QACtB,OAAO;mCAAE,IAAM;;IACnB;IAEA,IAAI,OAAO,QAAQ,GAAG,CAAC;IAEvB,qBACI,6LAAC;QAAI,WAAU;kBACV,KAAK,SAAS,CAAC;;;;;;AAG5B;GAdgB;;QAEY,8KAAA,CAAA,WAAQ;;;KAFpB","debugId":null}}]
+}

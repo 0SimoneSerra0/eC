@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/src/app/components/imagesview/ImagesView.tsx"],"sourcesContent":["\"use client\";\nimport { getProducts } from \"@/lib/api/api\";\nimport { useQuery } from \"@tanstack/react-query\"\n\nexport function ImagesView( props : { imgs : String[] } ) : React.ReactNode{\n\n    return(\n        <div className=\"bg-black text-white w-[100vw] h-[max(70vh,20rem)] max-w-[var(--max-w)] max-h-[calc(var(--max-h)*60/100)]\">\n\n        </div>\n    );\n}"],"names":[],"mappings":";;;;AAAA;;AAIO,SAAS,WAAY,KAA2B;IAEnD,qBACI,8OAAC;QAAI,WAAU;;;;;;AAIvB","debugId":null}},
+    {"offset": {"line": 26, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/node_modules/next/src/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = (\n  require('../../module.compiled') as typeof import('../../module.compiled')\n).vendored['react-ssr']!.ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":"AAAAA,OAAOC,OAAO,GACZC,QAAQ,4HACRC,QAAQ,CAAC,YAAY,CAAEC,kBAAkB","ignoreList":[0],"debugId":null}}]
+}
