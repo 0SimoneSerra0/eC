@@ -42,6 +42,9 @@
     --color-black: #000;
     --color-white: #fff;
     --spacing: .25rem;
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --radius-md: .375rem;
     --radius-2xl: 1rem;
     --default-font-family: var(--font-geist-sans);
     --default-mono-font-family: var(--font-geist-mono);
@@ -404,6 +407,10 @@
     margin-top: calc(var(--spacing) * 0);
   }
 
+  .mt-\[5\%\] {
+    margin-top: 5%;
+  }
+
   .mr-5 {
     margin-right: calc(var(--spacing) * 5);
   }
@@ -440,8 +447,8 @@
     height: 10%;
   }
 
-  .h-\[90\%\] {
-    height: 90%;
+  .h-\[60\%\] {
+    height: 60%;
   }
 
   .h-\[max\(70vh\,20rem\)\] {
@@ -493,16 +500,45 @@
     max-width: var(--max-w);
   }
 
+  .flex-col {
+    flex-direction: column;
+  }
+
   .items-center {
     align-items: center;
+  }
+
+  .justify-around {
+    justify-content: space-around;
   }
 
   .justify-between {
     justify-content: space-between;
   }
 
+  .justify-center {
+    justify-content: center;
+  }
+
+  .self-end {
+    align-self: flex-end;
+  }
+
+  .overflow-clip {
+    overflow: clip;
+  }
+
   .rounded-2xl {
     border-radius: var(--radius-2xl);
+  }
+
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+
+  .rounded-t-md {
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
   }
 
   .border-2 {
@@ -520,6 +556,23 @@
 
   .bg-white {
     background-color: var(--color-white);
+  }
+
+  .p-\[1\%\] {
+    padding: 1%;
+  }
+
+  .pt-\[2vw\] {
+    padding-top: 2vw;
+  }
+
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+
+  .text-nowrap {
+    text-wrap: nowrap;
   }
 
   .text-white {
@@ -551,8 +604,8 @@
   --foreground: #171717;
   --max-w: 1440px;
   --max-h: 810px;
-  --product-card-w: 5rem;
-  --product-card-h: 7rem;
+  --product-card-w: 20rem;
+  --product-card-h: 23rem;
 }
 
 @media (prefers-color-scheme: dark) {

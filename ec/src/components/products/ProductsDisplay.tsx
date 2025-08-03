@@ -7,6 +7,7 @@ export default function ProductDisplay(props: {children: ReactNode, rows: number
         props.cols = 0;
     }
 
+
     return (
         <div
             className={`
@@ -14,6 +15,7 @@ export default function ProductDisplay(props: {children: ReactNode, rows: number
                 w-[${props.rows === -1 ? "100%" : "calc(" + props.cols + "*var(--product-card-h)"}] 
                 h-[${"calc(" + props.cols + "*var(--product-card-h)"}]
                 bg-white
+                pt-[2vw]
             `}
         >
             {props.children}

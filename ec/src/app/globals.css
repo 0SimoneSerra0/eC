@@ -7,8 +7,8 @@
   --max-w: 1440px;
   --max-h: 810px;
 
-  --product-card-w: 5rem;
-  --product-card-h: 7rem;
+  --product-card-w: 20rem;
+  --product-card-h: 23rem;
 }
 
 @theme inline {

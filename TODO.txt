@@ -1,0 +1,8 @@
+To Do:
+  -Create a product image showcase components (products/ProductImage.tsx);
+  -Create the route for the generic product page;
+  -Resolve the database creation prblem with te reviews;
+  -add a login system;
+  -add personal user option and their settings (eg. profile image, name etc...);
+  -add the reviews interface (create, modify etc...) in the client and backend;
+  -add a simulation of a real paymant method;

@@ -221,7 +221,7 @@ class Product {
 ], Product.prototype, "rating", void 0);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(),
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", typeof ImageData === "undefined" ? Object : ImageData)
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", String)
 ], Product.prototype, "img", void 0);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(),
@@ -230,16 +230,36 @@ class Product {
 Product = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$ObjectType$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["ObjectType"])()
 ], Product);
+const a = {
+    user: "Giacomo",
+    date: "n/a",
+    content: "Bello schifo",
+    stars: 0.1
+};
 class ProductResolver {
     products() {
         return [
             {
                 id: "1",
-                name: "MacBook Pro"
+                name: "MacBook Pro",
+                price: 5.5,
+                description: "test",
+                rating: 5,
+                img: "test",
+                reviews: [
+                    a
+                ]
             },
             {
                 id: "2",
-                name: "iPhone 15"
+                name: "iPhone 15",
+                price: 5.5,
+                description: "test",
+                rating: 5,
+                img: "test",
+                reviews: [
+                    a
+                ]
             }
         ];
     }
