@@ -118,7 +118,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 function ProductCard(props) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-        className: "relative cursor-pointer flex flex-col justify-around items-center h-[var(--product-card-h)] w-[var(--product-card-w)] bg-black p-[1%] rounded-md overflow-clip",
+        className: "relative text-black cursor-pointer flex flex-col justify-around items-center h-[var(--product-card-h)] w-[var(--product-card-w)] bg-white p-[1%] rounded-md overflow-clip m-auto shadow-lg shadow-gray-600",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "w-full h-[60%] overflow-clip flex items-center justify-center rounded-t-md",
@@ -172,21 +172,59 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 ;
 function ProductDisplay(props) {
-    if (props.cols < 0) {
-        props.cols = 0;
+    if (props.rows !== Math.abs(Math.floor(props.rows)) || props.cols !== Math.floor(props.cols)) {
+        throw new Error("ProductDisplay.tsx: props.rows must be a positive integer and props.cols must be an integer.\n");
+    }
+    function getWidth() {
+        return props.cols < -1 ? "100%" : "calc(" + props.cols + "*var(--product-card-w))";
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `
-                flex
-                w-[${props.rows === -1 ? "100%" : "calc(" + props.cols + "*var(--product-card-h)"}] 
-                h-[${"calc(" + props.cols + "*var(--product-card-h)"}]
-                bg-white
-                pt-[2vw]
-            `,
+        className: "grid gap-10",
+        style: {
+            width: getWidth(),
+            height: `calc(${props.rows}*var(--product-card-h))`,
+            gridTemplateColumns: `repeat(${props.cols}, minmax(0, 1fr))`,
+            gridTemplateRows: `repeat(${props.rows < 0 ? `calc(100% / var(--product-card-w)` : props.rows}, minmax(0, 1fr))`
+        },
         children: props.children
     }, void 0, false, {
         fileName: "[project]/src/components/products/ProductsDisplay.tsx",
-        lineNumber: 12,
+        lineNumber: 16,
+        columnNumber: 9
+    }, this);
+}
+}),
+"[project]/src/components/products/ProductImage.tsx [app-rsc] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s({
+    "default": ()=>ProductImage
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
+;
+function ProductImage(props) {
+    if (![
+        "sm",
+        "md",
+        "lg"
+    ].includes(props.size.toLowerCase())) {
+        throw new Error(`Size '${props.size}' is not valid. Valid options <sm | md | lg>.\n`);
+    }
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+        href: "/product/",
+        className: `product-img-a-${props.size.toLowerCase()} m-auto`,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+            className: "h-full w-full h-auto w-auto",
+            src: props.img,
+            alt: props.imgAlt
+        }, void 0, false, {
+            fileName: "[project]/src/components/products/ProductImage.tsx",
+            lineNumber: 11,
+            columnNumber: 13
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/products/ProductImage.tsx",
+        lineNumber: 10,
         columnNumber: 9
     }, this);
 }
@@ -205,6 +243,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$graphql$2f$gra
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$imagesview$2f$ImagesView$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/imagesview/ImagesView.tsx [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$products$2f$ProductCard$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/products/ProductCard.tsx [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$products$2f$ProductsDisplay$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/products/ProductsDisplay.tsx [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$products$2f$ProductImage$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/products/ProductImage.tsx [app-rsc] (ecmascript)");
+;
 ;
 ;
 ;
@@ -235,36 +275,47 @@ async function Home() {
                     ]
                 }, void 0, false, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 27,
+                    lineNumber: 28,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$products$2f$ProductsDisplay$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-                    rows: 4,
-                    cols: 1,
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$products$2f$ProductCard$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-                        name: "Test",
-                        price: 32.50,
-                        img: "vercel.svg",
-                        imgAlt: "blank"
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 30,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
+                    rows: 1,
+                    cols: 4,
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$products$2f$ProductCard$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                            name: "Test",
+                            price: 32.50,
+                            img: "window.svg",
+                            imgAlt: "blank"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 31,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$products$2f$ProductImage$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                            img: "window.svg",
+                            imgAlt: "blank",
+                            size: "sm"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 32,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 29,
+                    lineNumber: 30,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/page.tsx",
-            lineNumber: 25,
+            lineNumber: 26,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/page.tsx",
-        lineNumber: 24,
+        lineNumber: 25,
         columnNumber: 5
     }, this);
 }
@@ -284,4 +335,4 @@ module.exports = mod;
 
 };
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__c0ef75a5._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__b945f2f4._.js.map

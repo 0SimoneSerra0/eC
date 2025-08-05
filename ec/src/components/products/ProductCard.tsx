@@ -2,7 +2,7 @@ export default function ProductCard(props: { name: string, price: number, img: s
 
 
     return (
-        <div className="relative flex flex-col justify-around items-center h-[var(--product-card-h)] w-[var(--product-card-w)] bg-black p-[1%] rounded-md overflow-clip">
+        <a className="relative text-black cursor-pointer flex flex-col justify-around items-center h-[var(--product-card-h)] w-[var(--product-card-w)] bg-white p-[1%] rounded-md overflow-clip m-auto shadow-lg shadow-gray-600">
 
             <div className="w-full h-[60%] overflow-clip flex items-center justify-center rounded-t-md">
             <img className="h-full w-full h-auto w-auto"
@@ -13,6 +13,6 @@ export default function ProductCard(props: { name: string, price: number, img: s
             <h2 className="mt-[5%] text-2xl w-full text-nowrap self-end">{props.name}</h2>
             <h1 className="text-2xl">{props.price}$</h1>
 
-        </div>
+        </a>
     );
 }

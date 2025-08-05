@@ -32,3 +32,19 @@ body {
   padding: 0;
   margin: 0;
 }
+
+
+.product-img-a-sm{
+  width: 10rem;
+  height: 10rem;
+}
+
+.product-img-a-md{
+  width: 15rem;
+  height: 15rem;
+}
+
+.product-img-a-lg{
+  width: 20rem;
+  height: 20rem;
+}
