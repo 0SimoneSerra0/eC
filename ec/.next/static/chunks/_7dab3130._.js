@@ -26,13 +26,12 @@ function ImagesView(props) {
             "ImagesView.useQuery": ()=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$graphql$2f$graphql$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getProducts"])()
         }["ImagesView.useQuery"]
     });
-    if (error) console.log("ERROR");
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "bg-black text-white w-[100vw] h-[max(70vh,20rem)] max-w-[var(--max-w)] max-h-[calc(var(--max-h)*60/100)]",
         children: JSON.stringify(data)
     }, void 0, false, {
         fileName: "[project]/src/components/imagesview/ImagesView.tsx",
-        lineNumber: 16,
+        lineNumber: 14,
         columnNumber: 9
     }, this);
 }

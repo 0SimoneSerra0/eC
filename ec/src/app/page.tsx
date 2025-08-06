@@ -1,9 +1,21 @@
 import { dehydrate, HydrationBoundary, QueryClientProvider, DehydratedState } from "@tanstack/react-query";
 import { queryClient, getProducts } from "@/lib/graphql/graphql";
-import { ImagesView } from "../components/imagesview/ImagesView";
+import { Carousel, CarouselElement } from "../components/Carousel/Carousel";
 import ProductCard from "@/components/products/ProductCard";
 import ProductDisplay from "@/components/products/ProductsDisplay";
 import ProductImage from "@/components/products/ProductImage";
+
+
+
+// Carusel Elements creation
+const CarEls : CarouselElement[]= [{img: "", imgAlt: "", link: ""}];
+
+
+
+
+
+
+
 
 export async function getDehydratedState(): Promise<{ dehydratedState: DehydratedState; }> {
   await queryClient.prefetchQuery({
@@ -16,19 +28,26 @@ export async function getDehydratedState(): Promise<{ dehydratedState: Dehydrate
   }
 }
 
+
+
+
+
+
 export default async function Home() {
 
   const { dehydratedState } = await getDehydratedState();
 
 
   return (
-    <div className="w-fit">
+    <div className="w-fit bg-gray-400">
       <HydrationBoundary state={dehydratedState}>
         
-        <ImagesView imgs={[""]} />
+        <Carousel elements={CarEls} />
 
-        <ProductDisplay rows={1} cols={4}>
+        <ProductDisplay rows={2} cols={2}>
           <ProductCard name="Test" price={32.50} img="window.svg" imgAlt="blank" />
+          <ProductImage img="window.svg" imgAlt="blank" size="sm"/>
+          <ProductImage img="window.svg" imgAlt="blank" size="sm"/>
           <ProductImage img="window.svg" imgAlt="blank" size="sm"/>
         </ProductDisplay>
 
