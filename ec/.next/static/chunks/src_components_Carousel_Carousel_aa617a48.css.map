@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/src/components/Carousel/Carousel.css"],"sourcesContent":[".carousel-arrow {\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    font-size: 2rem;\n    background-color: rgba(0, 0, 0, 0.4);\n    color: white;\n    border: none;\n    padding: 10px;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.carousel img {\n    height: 100%;\n    width: auto;\n    margin: auto;\n    display: none;\n    opacity: 0;\n}\n\n.carousel img.active {\n    display: block;\n}\n\n.carousel-arrow {\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    font-size: 2rem;\n    background-color: rgba(0, 0, 0, 0.4);\n    color: white;\n    border: none;\n    padding: 10px;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.carousel-arrow.left {\n    left: 10px;\n}\n\n.carousel-arrow.right {\n    right: 10px;\n}\n\n.carousel {\n    position: relative;\n    background-color: black;\n    width: 100vw;\n    height: max(70vh, 20rem);\n    max-width: var(--max-w);\n    max-height: calc(var(--max-h)*60/100);\n    overflow: clip;\n}"],"names":[],"mappings":"AAaA;;;;;;;;AAQA;;;;AAIA;;;;;;;;;;;;;AAaA;;;;AAIA;;;;AAIA","debugId":null}}]
+}

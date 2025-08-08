@@ -11,19 +11,21 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 "use client";
 ;
 ;
+;
 function renderImgs(imgsInfo) {
     return imgsInfo.map((imgInfo)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
             src: String(imgInfo[0]),
             alt: imgInfo[1],
-            className: "h-full w-auto cursor-pointer"
+            className: "cursor-pointer"
         }, void 0, false, {
             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-            lineNumber: 8,
+            lineNumber: 9,
             columnNumber: 50
         }, this));
 }
 function Carousel(props) {
     const [imgs, setImgs] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [index, setIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const imgsInfo = [];
         props.elements.forEach((el)=>imgsInfo.push([
@@ -34,34 +36,56 @@ function Carousel(props) {
     }, [
         props.elements
     ]);
+    // Changes the active image based on the index state
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const activeImg = document.querySelector(".carousel img.active");
+        if (activeImg) activeImg.classList.toggle("active");
+        const images = document.querySelectorAll(".carousel img");
+        if (images && images.length > 0) {
+            const img = images[index];
+            img.classList.add("active");
+        }
+    }, [
+        index
+    ]);
+    function increaseIndex() {
+        if (imgs.length == 0) return;
+        setIndex((prevIndex)=>prevIndex >= imgs.length - 1 ? 0 : prevIndex + 1);
+    }
+    function decreaseIndex() {
+        if (imgs.length <= 0) return;
+        setIndex((prevIndex)=>prevIndex <= 0 ? imgs.length - 1 : prevIndex - 1);
+    }
     // const { data, error } = useQuery({
     //     queryKey: ["products"],
     //     queryFn: () => getProducts(),
     // });
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "bg-black w-[100vw] h-[max(70vh,20rem)] max-w-[var(--max-w)] max-h-[calc(var(--max-h)*60/100)] overflow-x-slide overflow-y-clip",
+        className: "carousel",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                className: "corousel-arrow",
+                className: "carousel-arrow left",
+                onClick: decreaseIndex,
                 children: "❮"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 37,
+                lineNumber: 69,
                 columnNumber: 13
             }, this),
             imgs,
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                className: "corousel-arrow",
+                className: "carousel-arrow right",
+                onClick: increaseIndex,
                 children: "❯"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 39,
+                lineNumber: 71,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Carousel/Carousel.tsx",
-        lineNumber: 36,
+        lineNumber: 68,
         columnNumber: 9
     }, this);
 }

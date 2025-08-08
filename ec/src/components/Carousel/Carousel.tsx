@@ -2,10 +2,12 @@
 import { useQuery } from "@tanstack/react-query"
 import { getProducts } from "@/lib/graphql/graphql";
 import { ReactElement, useEffect, useState } from "react";
+import gsap from "gsap";
+import "./Carousel.css"
 
 
-function renderImgs(imgsInfo : [string, string][]) : ReactElement[]{
-    return imgsInfo.map<ReactElement>(imgInfo => <img src={String(imgInfo[0])} alt={imgInfo[1]} className="h-full w-auto cursor-pointer" />);
+function renderImgs(imgsInfo: [string, string][]): ReactElement[] {
+    return imgsInfo.map<ReactElement>((imgInfo, i) => <img key={i} src={String(imgInfo[0])} alt={imgInfo[1]} className="cursor-pointer" />);
 }
 
 
@@ -15,17 +17,66 @@ export type CarouselElement = {
     link: string
 }
 
-export function Carousel(props: { elements : CarouselElement[] }) {
+export function Carousel(props: { elements: CarouselElement[] }) {
     const [imgs, setImgs] = useState<ReactElement[]>([]);
+    const [index, setIndex] = useState(0);
+
 
     useEffect(() => {
-
-        const imgsInfo : [string, string][] = [];
-        props.elements.forEach( el => imgsInfo.push([el.img, el.imgAlt]));
+        const imgsInfo: [string, string][] = [];
+        props.elements.forEach(el => imgsInfo.push([el.img, el.imgAlt]));
 
         setImgs(renderImgs(imgsInfo));
-
     }, [props.elements]);
+
+
+
+
+
+    // This function Shows the image with the index equal to the state variable
+    function selectActiveImage() {
+        const images = document.querySelectorAll<HTMLImageElement>(".carousel img");
+        if (images && images.length > 0) {
+            const img = images[index] as HTMLImageElement;
+            img.classList.add("active");
+            gsap.to(img, {
+                opacity: 1,
+                duration: 0.5,
+            });
+        }
+    }
+
+    // This functon hide the previously active image and call 'selectActiveImage' right after
+    useEffect(() => {
+        const activeImg = document.querySelector<HTMLImageElement>(".carousel img.active");
+        if (activeImg) {
+            gsap.to(activeImg, {
+                opacity: 0,
+                duration: 0.5,
+            }).then(() => {
+                activeImg.classList.toggle("active");
+                selectActiveImage();
+            });
+        } else {
+            selectActiveImage();
+        }
+    }, [index, imgs]);
+
+
+
+    function increaseIndex() {
+        if (imgs.length == 0)
+            return;
+
+        setIndex(prevIndex => prevIndex >= imgs.length - 1 ? 0 : prevIndex + 1);
+    }
+    function decreaseIndex() {
+        if (imgs.length <= 0)
+            return;
+
+        setIndex(prevIndex => prevIndex <= 0 ? imgs.length - 1 : prevIndex - 1);
+    }
+
 
     // const { data, error } = useQuery({
     //     queryKey: ["products"],
@@ -33,10 +84,10 @@ export function Carousel(props: { elements : CarouselElement[] }) {
     // });
 
     return (
-        <div className="bg-black w-[100vw] h-[max(70vh,20rem)] max-w-[var(--max-w)] max-h-[calc(var(--max-h)*60/100)] overflow-x-slide overflow-y-clip">
-            <button className="corousel-arrow">❮</button>
+        <div className="carousel">
+            <button className="carousel-arrow left" onClick={decreaseIndex}>❮</button>
             {imgs}
-            <button className="corousel-arrow">❯</button>
+            <button className="carousel-arrow right" onClick={increaseIndex}>❯</button>
         </div>
     );
 }

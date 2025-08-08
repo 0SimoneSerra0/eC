@@ -8,7 +8,12 @@ import ProductImage from "@/components/products/ProductImage";
 
 
 // Carusel Elements creation
-const CarEls : CarouselElement[]= [{img: "", imgAlt: "", link: ""}];
+const CarEls : CarouselElement[]= [
+  {img: "ec-logo.svg", imgAlt: "", link: ""},
+  {img: "vercel.svg", imgAlt: "", link: ""},
+  {img: "file.svg", imgAlt: "", link: ""},
+  {img: "globe.svg", imgAlt: "", link: ""},
+];
 
 
 

@@ -595,10 +595,6 @@
     height: 60%;
   }
 
-  .h-\[max\(70vh\,20rem\)\] {
-    height: max(70vh, 20rem);
-  }
-
   .h-\[var\(--product-card-h\)\] {
     height: var(--product-card-h);
   }
@@ -611,16 +607,8 @@
     height: 100%;
   }
 
-  .max-h-\[calc\(var\(--max-h\)\*60\/100\)\] {
-    max-height: calc(var(--max-h) * 60 / 100);
-  }
-
   .w-20 {
     width: calc(var(--spacing) * 20);
-  }
-
-  .w-\[100vw\] {
-    width: 100vw;
   }
 
   .w-\[var\(--product-card-w\)\] {
@@ -680,10 +668,6 @@
     overflow: clip;
   }
 
-  .overflow-y-clip {
-    overflow-y: clip;
-  }
-
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
@@ -704,10 +688,6 @@
 
   .border-black {
     border-color: var(--color-black);
-  }
-
-  .bg-black {
-    background-color: var(--color-black);
   }
 
   .bg-gray-400 {
