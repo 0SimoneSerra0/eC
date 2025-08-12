@@ -28,6 +28,7 @@ function renderImgs(imgsInfo) {
 function Carousel(props) {
     const [imgs, setImgs] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [index, setIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const currentTween = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const imgsInfo = [];
         props.elements.forEach((el)=>imgsInfo.push([
@@ -37,6 +38,27 @@ function Carousel(props) {
         setImgs(renderImgs(imgsInfo));
     }, [
         props.elements
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const dotsDiv = document.querySelector(".carousel-dots-container");
+        console.log("1: ", dotsDiv);
+        if (dotsDiv) {
+            console.log(imgs.length);
+            const dots = [
+                ...dotsDiv.children
+            ];
+            dots.forEach((dot)=>{
+                dotsDiv.removeChild(dot);
+            });
+            for(let i = 0; i < imgs.length; i++){
+                const newDot = document.createElement("div");
+                newDot.classList.add("carousel-dot");
+                console.log(newDot);
+                dotsDiv.appendChild(newDot);
+            }
+        }
+    }, [
+        imgs
     ]);
     // This function Shows the image with the index equal to the state variable
     function selectActiveImage() {
@@ -50,19 +72,33 @@ function Carousel(props) {
             });
         }
     }
-    // This functon hide the previously active image and call 'selectActiveImage' right after
+    // This functon hide the previously active image and call 'selectActiveImage' right after. Also changes the selected dot at the bottom of the carousel
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        // Image selection
         const activeImg = document.querySelector(".carousel img.active");
         if (activeImg) {
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(activeImg, {
+            if (currentTween.current) {
+                currentTween.current.render(0);
+                currentTween.current.kill();
+                currentTween.current = null;
+            }
+            currentTween.current = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(activeImg, {
                 opacity: 0,
                 duration: 0.5
-            }).then(()=>{
+            });
+            currentTween.current.then(()=>{
                 activeImg.classList.toggle("active");
                 selectActiveImage();
             });
         } else {
             selectActiveImage();
+        }
+        // Dot selection
+        const currentDot = document.querySelector(".selected-carousel-dot");
+        currentDot?.classList.remove("selected-carousel-dot");
+        const dots = document.querySelectorAll(".carousel-dot");
+        if (dots) {
+            if (index < dots.length) dots[index].classList.add("selected-carousel-dot");
         }
     }, [
         index,
@@ -89,7 +125,7 @@ function Carousel(props) {
                 children: "❮"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 88,
+                lineNumber: 129,
                 columnNumber: 13
             }, this),
             imgs,
@@ -99,13 +135,20 @@ function Carousel(props) {
                 children: "❯"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 90,
+                lineNumber: 131,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "carousel-dots-container"
+            }, void 0, false, {
+                fileName: "[project]/src/components/Carousel/Carousel.tsx",
+                lineNumber: 132,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Carousel/Carousel.tsx",
-        lineNumber: 87,
+        lineNumber: 128,
         columnNumber: 9
     }, this);
 }

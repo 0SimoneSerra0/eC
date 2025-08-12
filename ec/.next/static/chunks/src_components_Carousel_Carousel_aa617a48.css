@@ -42,4 +42,28 @@
   overflow: clip;
 }
 
+.carousel-dots-container {
+  justify-content: space-between;
+  width: 15%;
+  height: 2%;
+  display: flex;
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-dot {
+  background-color: gray;
+  border-radius: 8px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 20%;
+  height: 100%;
+}
+
+.selected-carousel-dot {
+  background-color: #fff;
+}
+
 /*# sourceMappingURL=src_components_Carousel_Carousel_aa617a48.css.map*/
