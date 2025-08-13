@@ -75,6 +75,7 @@
     border-radius: 8px;  
     flex-shrink: 0; 
     flex-grow: 0;
+    transition: bacground-color .2s linear;
 }
 
 

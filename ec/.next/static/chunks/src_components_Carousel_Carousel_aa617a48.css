@@ -60,6 +60,7 @@
   flex-shrink: 0;
   width: 20%;
   height: 100%;
+  transition: bacground-color .2s linear;
 }
 
 .selected-carousel-dot {
