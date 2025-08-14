@@ -1,5 +1,13 @@
 module.exports = {
 
+"[externals]/timers [external] (timers, cjs)": ((__turbopack_context__) => {
+
+var { m: module, e: exports } = __turbopack_context__;
+{
+const mod = __turbopack_context__.x("timers", () => require("timers"));
+
+module.exports = mod;
+}}),
 "[project]/src/components/Carousel/Carousel.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -9,7 +17,9 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/gsap/index.js [app-ssr] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$externals$5d2f$timers__$5b$external$5d$__$28$timers$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/timers [external] (timers, cjs)");
 "use client";
+;
 ;
 ;
 ;
@@ -23,7 +33,7 @@ function renderImgs(imgsInfo) {
             className: "cursor-pointer"
         }, i, false, {
             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-            lineNumber: 14,
+            lineNumber: 15,
             columnNumber: 55
         }, this));
 }
@@ -43,16 +53,17 @@ function Carousel(props) {
     }, [
         props.elements
     ]);
-    function deleteScrollInterval() {
-        if (autoScrollInterval.current) {
-            window.clearInterval(autoScrollInterval.current);
-            autoScrollInterval.current = null;
-        }
-    }
     function activeAutoScroll() {
         if (!autoScrollInterval.current) {
             autoScrollInterval.current = window.setInterval(()=>{
-                setIndex((prevIndex)=>prevIndex >= imgs.length - 1 ? 0 : prevIndex + 1);
+                console.log(index, " ", imgs.length);
+                if (index >= imgs.length - 1) {
+                    console.log("1");
+                    setIndex(0);
+                } else {
+                    console.log("2");
+                    setIndex((prevIndex)=>prevIndex++);
+                }
             }, scrollInterval * 1000);
         }
     }
@@ -63,7 +74,10 @@ function Carousel(props) {
         if (autoScroll) {
             activeAutoScroll();
         } else {
-            deleteScrollInterval();
+            if (autoScrollInterval.current) {
+                (0, __TURBOPACK__imported__module__$5b$externals$5d2f$timers__$5b$external$5d$__$28$timers$2c$__cjs$29$__["clearInterval"])(autoScrollInterval.current);
+                autoScrollInterval.current = null;
+            }
         }
     }, [
         autoScroll
@@ -84,7 +98,10 @@ function Carousel(props) {
             }
         }
         if (autoScroll) {
-            deleteScrollInterval();
+            if (autoScrollInterval.current) {
+                (0, __TURBOPACK__imported__module__$5b$externals$5d2f$timers__$5b$external$5d$__$28$timers$2c$__cjs$29$__["clearInterval"])(autoScrollInterval.current);
+                autoScrollInterval.current = null;
+            }
             activeAutoScroll();
         }
     }, [
@@ -135,18 +152,10 @@ function Carousel(props) {
     ]);
     function increaseIndex() {
         if (imgs.length == 0) return;
-        if (autoScrollInterval.current && autoScroll) {
-            deleteScrollInterval();
-            activeAutoScroll();
-        }
         setIndex((prevIndex)=>prevIndex >= imgs.length - 1 ? 0 : prevIndex + 1);
     }
     function decreaseIndex() {
         if (imgs.length <= 0) return;
-        if (autoScrollInterval.current && autoScroll) {
-            deleteScrollInterval();
-            activeAutoScroll();
-        }
         setIndex((prevIndex)=>prevIndex <= 0 ? imgs.length - 1 : prevIndex - 1);
     }
     // const { data, error } = useQuery({
@@ -162,7 +171,7 @@ function Carousel(props) {
                 children: "❮"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 177,
+                lineNumber: 175,
                 columnNumber: 13
             }, this),
             imgs,
@@ -172,20 +181,20 @@ function Carousel(props) {
                 children: "❯"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 179,
+                lineNumber: 177,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "carousel-dots-container"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 180,
+                lineNumber: 178,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Carousel/Carousel.tsx",
-        lineNumber: 176,
+        lineNumber: 174,
         columnNumber: 9
     }, this);
 }
@@ -193,4 +202,4 @@ function Carousel(props) {
 
 };
 
-//# sourceMappingURL=src_components_Carousel_Carousel_tsx_9f1eea01._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__54456427._.js.map

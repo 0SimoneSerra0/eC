@@ -26,14 +26,14 @@ function renderImgs(imgsInfo) {
             className: "cursor-pointer"
         }, i, false, {
             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-            lineNumber: 15,
+            lineNumber: 14,
             columnNumber: 55
         }, this));
 }
 function Carousel(props) {
     _s();
-    const [imgs, setImgs] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [index, setIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    var [imgs, setImgs] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    var [index, setIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const [autoScroll, setAutoScroll] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const autoScrollInterval = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const currentTween = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
@@ -46,21 +46,23 @@ function Carousel(props) {
                         el.imgAlt
                     ])
             }["Carousel.useEffect"]);
-            if (imgs.length === 0 && props.elements.length !== 0 && autoScroll) {
-                activeAutoScroll();
-            }
             setImgs(renderImgs(imgsInfo));
         }
     }["Carousel.useEffect"], [
         props.elements
     ]);
+    function deleteScrollInterval() {
+        if (autoScrollInterval.current) {
+            window.clearInterval(autoScrollInterval.current);
+            autoScrollInterval.current = null;
+        }
+    }
     function activeAutoScroll() {
-        var _autoScrollInterval_current;
-        if (!((_autoScrollInterval_current = autoScrollInterval.current) === null || _autoScrollInterval_current === void 0 ? void 0 : _autoScrollInterval_current.hasRef())) console.log("ciao");
-        autoScrollInterval.current = setInterval(()=>{
-            if (index >= imgs.length - 1) setIndex(0);
-            else setIndex((prevIndex)=>prevIndex++);
-        }, scrollInterval * 1000);
+        if (!autoScrollInterval.current) {
+            autoScrollInterval.current = window.setInterval(()=>{
+                setIndex((prevIndex)=>prevIndex >= imgs.length - 1 ? 0 : prevIndex + 1);
+            }, scrollInterval * 1000);
+        }
     }
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Carousel.useEffect": ()=>{
@@ -70,11 +72,7 @@ function Carousel(props) {
             if (autoScroll) {
                 activeAutoScroll();
             } else {
-                var _autoScrollInterval_current;
-                if ((_autoScrollInterval_current = autoScrollInterval.current) === null || _autoScrollInterval_current === void 0 ? void 0 : _autoScrollInterval_current.hasRef()) {
-                    autoScrollInterval.current.close();
-                    autoScrollInterval.current = null;
-                }
+                deleteScrollInterval();
             }
         }
     }["Carousel.useEffect"], [
@@ -97,6 +95,10 @@ function Carousel(props) {
                     newDot.classList.add("carousel-dot");
                     dotsDiv.appendChild(newDot);
                 }
+            }
+            if (autoScroll) {
+                deleteScrollInterval();
+                activeAutoScroll();
             }
         }
     }["Carousel.useEffect"], [
@@ -151,10 +153,18 @@ function Carousel(props) {
     ]);
     function increaseIndex() {
         if (imgs.length == 0) return;
+        if (autoScrollInterval.current && autoScroll) {
+            deleteScrollInterval();
+            activeAutoScroll();
+        }
         setIndex((prevIndex)=>prevIndex >= imgs.length - 1 ? 0 : prevIndex + 1);
     }
     function decreaseIndex() {
         if (imgs.length <= 0) return;
+        if (autoScrollInterval.current && autoScroll) {
+            deleteScrollInterval();
+            activeAutoScroll();
+        }
         setIndex((prevIndex)=>prevIndex <= 0 ? imgs.length - 1 : prevIndex - 1);
     }
     // const { data, error } = useQuery({
@@ -170,7 +180,7 @@ function Carousel(props) {
                 children: "❮"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 169,
+                lineNumber: 177,
                 columnNumber: 13
             }, this),
             imgs,
@@ -180,20 +190,20 @@ function Carousel(props) {
                 children: "❯"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 171,
+                lineNumber: 179,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "carousel-dots-container"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 172,
+                lineNumber: 180,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Carousel/Carousel.tsx",
-        lineNumber: 168,
+        lineNumber: 176,
         columnNumber: 9
     }, this);
 }

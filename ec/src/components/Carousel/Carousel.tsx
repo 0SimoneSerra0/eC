@@ -6,7 +6,6 @@ import gsap from "gsap";
 import "./Carousel.css"
 
 
-
 const carouselTransition = 0.4; // in seconds
 const scrollInterval = 5; // in seconds
 
@@ -23,10 +22,10 @@ export type CarouselElement = {
 }
 
 export function Carousel(props: { elements: CarouselElement[] }) {
-    const [imgs, setImgs] = useState<ReactElement[]>([]);
-    const [index, setIndex] = useState(0);
+    var [imgs, setImgs] = useState<ReactElement[]>([]);
+    var [index, setIndex] = useState(0);
     const [autoScroll, setAutoScroll] = useState(true);
-    const autoScrollInterval = useRef<NodeJS.Timeout>(null);
+    const autoScrollInterval = useRef<ReturnType<typeof window.setInterval> | null>(null);
     const currentTween = useRef<gsap.core.Tween>(null);
 
 
@@ -34,24 +33,23 @@ export function Carousel(props: { elements: CarouselElement[] }) {
         const imgsInfo: [string, string][] = [];
         props.elements.forEach(el => imgsInfo.push([el.img, el.imgAlt]));
 
-        if (imgs.length === 0 && props.elements.length !== 0 && autoScroll) {
-            activeAutoScroll();
-        }
-
         setImgs(renderImgs(imgsInfo));
     }, [props.elements]);
 
 
+    function deleteScrollInterval() {
+        if (autoScrollInterval.current) {
+            window.clearInterval(autoScrollInterval.current);
+            autoScrollInterval.current = null
+        }
+    }
+
     function activeAutoScroll() {
 
-        if (!autoScrollInterval.current?.hasRef()) {
-            console.log("Ciao");
-            autoScrollInterval.current = setInterval(() => {
-                if (index >= imgs.length - 1)
-                    setIndex(0);
-                else
-                    setIndex(prevIndex => prevIndex++);
-            }, scrollInterval * 1000)
+        if (!autoScrollInterval.current) {
+            autoScrollInterval.current = window.setInterval(() => {
+                setIndex(prevIndex => prevIndex >= imgs.length - 1 ? 0 : prevIndex + 1);
+            }, scrollInterval * 1000);
         }
 
     }
@@ -65,10 +63,7 @@ export function Carousel(props: { elements: CarouselElement[] }) {
         if (autoScroll) {
             activeAutoScroll();
         } else {
-            if (autoScrollInterval.current?.hasRef()) {
-                autoScrollInterval.current.close();
-                autoScrollInterval.current = null;
-            }
+            deleteScrollInterval();
         }
     }, [autoScroll])
 
@@ -89,7 +84,10 @@ export function Carousel(props: { elements: CarouselElement[] }) {
             }
         }
 
-
+        if (autoScroll) {
+            deleteScrollInterval();
+            activeAutoScroll();
+        }
     }, [imgs]);
 
 
@@ -111,7 +109,6 @@ export function Carousel(props: { elements: CarouselElement[] }) {
 
     // This functon hide the previously active image and call 'selectActiveImage' right after. Also changes the selected dot at the bottom of the carousel
     useEffect(() => {
-
         // Image selection
         const activeImg = document.querySelector<HTMLImageElement>(".carousel img.active");
         if (activeImg) {
@@ -151,11 +148,21 @@ export function Carousel(props: { elements: CarouselElement[] }) {
         if (imgs.length == 0)
             return;
 
+        if (autoScrollInterval.current && autoScroll) {
+            deleteScrollInterval();
+            activeAutoScroll();
+        }
+
         setIndex(prevIndex => prevIndex >= imgs.length - 1 ? 0 : prevIndex + 1);
     }
     function decreaseIndex() {
         if (imgs.length <= 0)
             return;
+
+        if (autoScrollInterval.current && autoScroll) {
+            deleteScrollInterval();
+            activeAutoScroll();
+        }
 
         setIndex(prevIndex => prevIndex <= 0 ? imgs.length - 1 : prevIndex - 1);
     }
