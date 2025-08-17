@@ -20,22 +20,30 @@ model Product {
   description String
   price       Float
   createdAt   DateTime @default(now())
+  img         String
 
   reviews Review[] @relation("ProductReviews")
 }
 
 model Review {
   id      String   @id @default(cuid())
-  user    String
+  user    User     @relation("UserReview", fields: [userId], references: [id])
   content String
   stars   Int
   date    DateTime @default(now())
 
   product   Product @relation("ProductReviews", fields: [productId], references: [id])
   productId String
+  userId    String
 }
 
 model User {
-  id   String @id @default(cuid())
-  name String
+  id       String @id @default(cuid())
+  name     String
+  lastname String
+  img      String
+
+  email    String
+  password String
+  reviews  Review[] @relation("UserReview")
 }

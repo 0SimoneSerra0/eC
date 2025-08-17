@@ -1,17 +1,24 @@
-import { Resolver, Query, ObjectType, Field, ID } from "type-graphql"
+import { Resolver, Query, ObjectType, Field, Float, ID, Arg } from "type-graphql"
+import { PrismaClient } from "@prisma/client";
 
+@ObjectType()
+class Review {
+  @Field( () => ID)
+  user!: string
 
-export type Review =  {
-  user: string;
-  date: string;
-  content: string;
-  stars: number;
+  @Field()
+  date!: string
+
+  @Field()
+  content!: string
+
+  @Field(() => Float) // perché number di default diventa Int
+  stars!: number
 }
-
 
 @ObjectType()
 class Product {
-  @Field(() => ID)
+  @Field()
   id!: string
 
   @Field()
@@ -29,20 +36,24 @@ class Product {
   @Field()
   img!: string
 
-  @Field()
+  @Field( () => [Review])
   reviews!: Review[]
 }
 
 
 const a : Review = {user: "Giacomo", date: "n/a", content: "Bello schifo", stars: 0.1}
-
+const prisma = new PrismaClient();
 @Resolver(Product)
 export class ProductResolver {
   @Query(() => [Product])
-  products(): Product[] {
-    return [
-      { id: "1", name: "MacBook Pro", price: 5.5, description: "test", rating: 5, img: "test", reviews: [a]},
-      { id: "2", name: "iPhone 15", price: 5.5, description: "test", rating: 5, img: "test", reviews: [a] },
-    ]
+  async products(): Promise<Product[]> {
+    return prisma.product.findMany();
+  }
+
+  @Query(() => Product, { nullable: true })
+  async product(@Arg("id") id: string): Promise<Product | null> {
+    return prisma.product.findUnique({
+      where: { id: Number(id) }, // WHERE id = $1
+    });
   }
 }

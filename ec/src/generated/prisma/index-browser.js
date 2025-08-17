@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.12.0
- * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
+ * Prisma Client JS version: 6.14.0
+ * Query Engine version: 717184b7b35ea05dfa71a3236b7af656013e1e49
  */
 Prisma.prismaVersion = {
-  client: "6.12.0",
-  engine: "8047c96bbd92db98a2abc7c9323ce77c02c89dbc"
+  client: "6.14.0",
+  engine: "717184b7b35ea05dfa71a3236b7af656013e1e49"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -125,21 +125,26 @@ exports.Prisma.ProductScalarFieldEnum = {
   name: 'name',
   description: 'description',
   price: 'price',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  img: 'img'
 };
 
 exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
-  user: 'user',
   content: 'content',
   stars: 'stars',
   date: 'date',
-  productId: 'productId'
+  productId: 'productId',
+  userId: 'userId'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  lastname: 'lastname',
+  img: 'img',
+  email: 'email',
+  password: 'password'
 };
 
 exports.Prisma.SortOrder = {

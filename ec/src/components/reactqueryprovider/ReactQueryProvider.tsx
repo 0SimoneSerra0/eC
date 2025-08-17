@@ -3,11 +3,15 @@
 import { ReactNode } from "react"
 import { QueryClientProvider } from "@tanstack/react-query"
 import { queryClient } from "@/lib/graphql/graphql"
+import { ApolloProvider } from "@apollo/client";
+import apolloClient from "@/lib/apollo/client";
 
 export default function ReactQueryProvider({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <ApolloProvider client={apolloClient}>
+        {children}
+      </ApolloProvider>
     </QueryClientProvider>
   )
 }

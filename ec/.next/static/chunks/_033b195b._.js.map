@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/src/app/products/%5Bid%5D/page.tsx"],"sourcesContent":["\"use client\";\nimport { useParams } from 'next/navigation'\n\nexport default function ProductPage(){\n    const params = useParams();\n    console.log(params);\n\n    return (\n        <div>\n\n        </div>\n    );\n}"],"names":[],"mappings":";;;;AACA;;;AADA;;AAGe,SAAS;;IACpB,MAAM,SAAS,CAAA,GAAA,qIAAA,CAAA,YAAS,AAAD;IACvB,QAAQ,GAAG,CAAC;IAEZ,qBACI,6LAAC;;;;;AAIT;GATwB;;QACL,qIAAA,CAAA,YAAS;;;KADJ","debugId":null}},
+    {"offset": {"line": 42, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/node_modules/next/navigation.js"],"sourcesContent":["module.exports = require('./dist/client/components/navigation')\n"],"names":[],"mappings":"AAAA,OAAO,OAAO","ignoreList":[0],"debugId":null}}]
+}

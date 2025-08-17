@@ -190,6 +190,31 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$grap
 ;
 ;
 ;
+class Review {
+    user;
+    date;
+    content;
+    stars;
+}
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(),
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", String)
+], Review.prototype, "user", void 0);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(),
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", String)
+], Review.prototype, "date", void 0);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(),
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", String)
+], Review.prototype, "content", void 0);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(()=>__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$scalars$2f$aliases$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Float"]),
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", Number)
+], Review.prototype, "stars", void 0);
+Review = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$ObjectType$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["ObjectType"])()
+], Review);
 class Product {
     id;
     name;
@@ -200,7 +225,7 @@ class Product {
     reviews;
 }
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(()=>__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$scalars$2f$aliases$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["ID"]),
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(),
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", String)
 ], Product.prototype, "id", void 0);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
@@ -224,7 +249,9 @@ class Product {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", String)
 ], Product.prototype, "img", void 0);
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(),
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$type$2d$graphql$2f$build$2f$esm$2f$decorators$2f$Field$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Field"])(()=>[
+            Review
+        ]),
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_metadata__as__$5f3e$__["_"])("design:type", Array)
 ], Product.prototype, "reviews", void 0);
 Product = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$export__$5f$_decorate__as__$5f3e$__["_"])([

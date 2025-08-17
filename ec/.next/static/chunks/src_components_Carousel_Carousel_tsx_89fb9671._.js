@@ -26,7 +26,7 @@ function renderImgs(imgsInfo) {
             className: "cursor-pointer"
         }, i, false, {
             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-            lineNumber: 14,
+            lineNumber: 12,
             columnNumber: 55
         }, this));
 }
@@ -167,10 +167,6 @@ function Carousel(props) {
         }
         setIndex((prevIndex)=>prevIndex <= 0 ? imgs.length - 1 : prevIndex - 1);
     }
-    // const { data, error } = useQuery({
-    //     queryKey: ["products"],
-    //     queryFn: () => getProducts(),
-    // });
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "carousel",
         children: [
@@ -180,7 +176,7 @@ function Carousel(props) {
                 children: "❮"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 177,
+                lineNumber: 170,
                 columnNumber: 13
             }, this),
             imgs,
@@ -190,20 +186,20 @@ function Carousel(props) {
                 children: "❯"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 179,
+                lineNumber: 172,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "carousel-dots-container"
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 180,
+                lineNumber: 173,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Carousel/Carousel.tsx",
-        lineNumber: 176,
+        lineNumber: 169,
         columnNumber: 9
     }, this);
 }

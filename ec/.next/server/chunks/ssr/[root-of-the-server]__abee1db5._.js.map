@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 29, "column": 0}, "map": {"version":3,"sources":["file:///home/s/Documents/Programmazione/GitHub/MyRepositories/eC/ec/src/app/products/%5Bid%5D/page.tsx"],"sourcesContent":["\"use client\";\nimport { useParams } from 'next/navigation'\nimport { useQuery } from \"@tanstack/react-query\"\nimport { getProducts } from \"@/lib/graphql/graphql\";\n\nfunction isProductValid() : boolean{\n    const params = useParams();\n\n    \n    const { data, error } = useQuery({\n        queryKey: [\"products\"],\n        queryFn: () => getProducts(),\n    });\n\n    return false;\n}\n\nexport default function ProductPage(){\n    return (\n        <div>\n\n        </div>\n    );\n}"],"names":[],"mappings":";;;;AACA;AACA;AACA;AAHA;;;;;AAKA,SAAS;IACL,MAAM,SAAS,CAAA,GAAA,kIAAA,CAAA,YAAS,AAAD;IAGvB,MAAM,EAAE,IAAI,EAAE,KAAK,EAAE,GAAG,CAAA,GAAA,2KAAA,CAAA,WAAQ,AAAD,EAAE;QAC7B,UAAU;YAAC;SAAW;QACtB,SAAS,IAAM,CAAA,GAAA,gIAAA,CAAA,cAAW,AAAD;IAC7B;IAEA,OAAO;AACX;AAEe,SAAS;IACpB,qBACI,8OAAC;;;;;AAIT","debugId":null}}]
+}

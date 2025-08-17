@@ -1,6 +1,4 @@
 "use client";
-import { useQuery } from "@tanstack/react-query"
-import { getProducts } from "@/lib/graphql/graphql";
 import { ReactElement, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import "./Carousel.css"
@@ -166,11 +164,6 @@ export function Carousel(props: { elements: CarouselElement[] }) {
 
         setIndex(prevIndex => prevIndex <= 0 ? imgs.length - 1 : prevIndex - 1);
     }
-
-    // const { data, error } = useQuery({
-    //     queryKey: ["products"],
-    //     queryFn: () => getProducts(),
-    // });
 
     return (
         <div className="carousel">
