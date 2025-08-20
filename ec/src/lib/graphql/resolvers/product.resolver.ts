@@ -1,9 +1,9 @@
 import { Resolver, Query, ObjectType, Field, Float, ID, Arg } from "type-graphql"
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../../generated/prisma";
 
 @ObjectType()
 class Review {
-  @Field( () => ID)
+  @Field()
   user!: string
 
   @Field()
@@ -22,6 +22,9 @@ class Product {
   id!: string
 
   @Field()
+  slug!: string
+
+  @Field()
   name!: string
 
   @Field()
@@ -29,9 +32,6 @@ class Product {
 
   @Field()
   description!: string
-
-  @Field()
-  rating!: number
 
   @Field()
   img!: string
@@ -51,9 +51,9 @@ export class ProductResolver {
   }
 
   @Query(() => Product, { nullable: true })
-  async product(@Arg("id") id: string): Promise<Product | null> {
+  async product(@Arg("slug") slug: string): Promise<Product | null> {
     return prisma.product.findUnique({
-      where: { id: Number(id) }, // WHERE id = $1
+      where: { slug: slug },
     });
   }
 }

@@ -1,9 +1,12 @@
 "use client";
 import { useQuery, gql } from "@apollo/client";
+import { useParams } from "next/navigation";
+import ProductNotFound from "@/components/generalPages/PrductNotFound";
+import DBError from "@/components/generalPages/DatabaseError";
 
 const GET_PRODUCT = gql`
-  query GetProduct($id: ID!) {
-    product(id: $id) {
+  query GetProduct($slug: String!) {
+    product(slug: $slug) {
       id
       name
       price
@@ -11,14 +14,14 @@ const GET_PRODUCT = gql`
   }
 `;
 
-function ProductDetails({ id }: { id: string }) {
+function ProductDetails({ slug }: { slug: string }) {
   const { loading, error, data } = useQuery(GET_PRODUCT, {
-    variables: { id },
+    variables: { slug },
   });
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  if (!data.product) return <p>Product Not Found</p>;
+  if (error) return <DBError />;
+  if (!data?.product) return <ProductNotFound />;
 
   return (
     <div>
@@ -29,9 +32,12 @@ function ProductDetails({ id }: { id: string }) {
 }
 
 export default function ProductPage(){
+  const params = useParams();
+  
+
     return(
         <div>
-            {ProductDetails({id : "1"})}
+            <ProductDetails slug={String(params.id)} />
         </div>
     );
 }

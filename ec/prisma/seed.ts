@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../src/generated/prisma";
 
 const prisma = new PrismaClient();
 
@@ -6,31 +6,31 @@ async function main() {
   await prisma.product.createMany({
     data: [
       {
+        slug : "smartphone-0",
         name: "Smartphone",
         price: 299.99,
         description: "New smartphones with 5g and increased performance",
-        rating: 4.5,
         img: "/images/smartphone.png",
       },
       {
+        slug : "tablet-0",
         name: "Tablet",
         price: 199.99,
         description: "Ligth-weight tablet",
-        rating: 4.0,
         img: "/images/tablet.png",
       },
       {
+        slug : "laptop-0",
         name: "Laptop",
         price: 799.99,
         description: "Laptop for work and more",
-        rating: 4.3,
         img: "/images/laptop.png",
       },
       {
+        slug : "headphones-0",
         name: "Headphones",
         price: 59.99,
         description: "Bluetooth headphones",
-        rating: 4.2,
         img: "/images/headphones.png",
       },
     ],
