@@ -15,8 +15,15 @@ const GET_PRODUCT = gql`
 `;
 
 function ProductDetails({ slug }: { slug: string }) {
+
+}
+
+export default function ProductPage() {
+  const params = useParams();
+
+
   const { loading, error, data } = useQuery(GET_PRODUCT, {
-    variables: { slug },
+    variables: { slug: params.id },
   });
 
   if (loading) return <p>Loading...</p>;
@@ -24,20 +31,18 @@ function ProductDetails({ slug }: { slug: string }) {
   if (!data?.product) return <ProductNotFound />;
 
   return (
-    <div>
-      <h2>{data.product.name}</h2>
-      <p>Price: {data.product.price}</p>
+    <div className="flex relative w-[100vw] max-w-[var(--max-w)]">
+      <img src={data.product.img} alt="" className="w-xs h-auto" />
+
+      <div className="flex ml-36 flex-wrap">
+
+        <h2 className="text-4xl">{data.product.name}</h2>
+        <div className="flex-break"></div>
+        <p>Price: {data.product.price}</p>
+        <div className="flex-break"></div>
+        <p className="mt-10">{data.product.description}</p>
+      </div>
+
     </div>
   );
-}
-
-export default function ProductPage(){
-  const params = useParams();
-  
-
-    return(
-        <div>
-            <ProductDetails slug={String(params.id)} />
-        </div>
-    );
 }

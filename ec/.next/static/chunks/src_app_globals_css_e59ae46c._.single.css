@@ -77,23 +77,32 @@
 
 @layer theme {
   :root, :host {
+    --color-blue-400: #54a2ff;
+    --color-blue-600: #155dfc;
     --color-gray-400: #99a1af;
     --color-gray-600: #4a5565;
     --color-black: #000;
     --color-white: #fff;
     --spacing: .25rem;
+    --container-xs: 20rem;
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
+    --text-7xl: 4.5rem;
+    --text-7xl--line-height: 1;
     --radius-md: .375rem;
     --radius-2xl: 1rem;
-    --default-transition-duration: .15s;
-    --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     --default-font-family: var(--font-geist-sans);
     --default-mono-font-family: var(--font-geist-mono);
   }
 
   @supports (color: color(display-p3 0 0 0)) {
     :root, :host {
+      --color-blue-400: color(display-p3 .397443 .62813 .992116);
+      --color-blue-600: color(display-p3 .174493 .358974 .950247);
       --color-gray-400: color(display-p3 .605734 .630385 .680158);
       --color-gray-600: color(display-p3 .297358 .332176 .39043);
     }
@@ -101,6 +110,8 @@
 
   @supports (color: lab(0% 0 0)) {
     :root, :host {
+      --color-blue-400: lab(65.0361% -1.42065 -56.9802);
+      --color-blue-600: lab(44.0605% 29.0279 -86.0352);
       --color-gray-400: lab(65.9269% -.832707 -8.17473);
       --color-gray-600: lab(35.6337% -1.58697 -10.8425);
     }
@@ -451,8 +462,8 @@
 @layer components;
 
 @layer utilities {
-  .fixed {
-    position: fixed;
+  .absolute {
+    position: absolute;
   }
 
   .relative {
@@ -463,12 +474,20 @@
     position: static;
   }
 
+  .right-\[5\%\] {
+    right: 5%;
+  }
+
   .m-auto {
     margin: auto;
   }
 
   .mt-0 {
     margin-top: calc(var(--spacing) * 0);
+  }
+
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
   }
 
   .mt-\[5\%\] {
@@ -485,6 +504,14 @@
 
   .mb-0 {
     margin-bottom: calc(var(--spacing) * 0);
+  }
+
+  .mb-20 {
+    margin-bottom: calc(var(--spacing) * 20);
+  }
+
+  .ml-36 {
+    margin-left: calc(var(--spacing) * 36);
   }
 
   .ml-auto {
@@ -507,16 +534,12 @@
     display: grid;
   }
 
-  .hidden {
-    display: none;
-  }
-
-  .inline {
-    display: inline;
-  }
-
   .table {
     display: table;
+  }
+
+  .h-80 {
+    height: calc(var(--spacing) * 80);
   }
 
   .h-\[10\%\] {
@@ -525,6 +548,14 @@
 
   .h-\[60\%\] {
     height: 60%;
+  }
+
+  .h-\[calc\(100vh-var\(--header-h\)\)\] {
+    height: calc(100vh - var(--header-h));
+  }
+
+  .h-\[var\(--header-h\)\] {
+    height: var(--header-h);
   }
 
   .h-\[var\(--product-card-h\)\] {
@@ -539,8 +570,20 @@
     height: 100%;
   }
 
+  .max-h-\[var\(--max-h\)\] {
+    max-height: var(--max-h);
+  }
+
   .w-20 {
     width: calc(var(--spacing) * 20);
+  }
+
+  .w-80 {
+    width: calc(var(--spacing) * 80);
+  }
+
+  .w-\[100vw\] {
+    width: 100vw;
   }
 
   .w-\[var\(--product-card-w\)\] {
@@ -560,8 +603,16 @@
     width: 100%;
   }
 
+  .w-xs {
+    width: var(--container-xs);
+  }
+
   .max-w-\[var\(--max-w\)\] {
     max-width: var(--max-w);
+  }
+
+  .max-w-\[var\(--max-w-\)\] {
+    max-width: var(--max-w-);
   }
 
   .transform {
@@ -572,12 +623,12 @@
     cursor: pointer;
   }
 
-  .resize {
-    resize: both;
-  }
-
   .flex-col {
     flex-direction: column;
+  }
+
+  .flex-wrap {
+    flex-wrap: wrap;
   }
 
   .items-center {
@@ -602,12 +653,6 @@
 
   .self-end {
     align-self: flex-end;
-  }
-
-  .truncate {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
   }
 
   .overflow-clip {
@@ -653,6 +698,21 @@
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
 
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+
+  .text-7xl {
+    font-size: var(--text-7xl);
+    line-height: var(--tw-leading, var(--text-7xl--line-height));
+  }
+
   .text-nowrap {
     text-wrap: nowrap;
   }
@@ -661,18 +721,22 @@
     color: var(--color-black);
   }
 
+  .text-blue-600 {
+    color: var(--color-blue-600);
+  }
+
   .lowercase {
     text-transform: lowercase;
+  }
+
+  .underline {
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
   }
 
   .antialiased {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  .shadow {
-    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgba(0, 0, 0, .1)), 0 1px 2px -1px var(--tw-shadow-color, rgba(0, 0, 0, .1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 
   .shadow-lg {
@@ -706,15 +770,15 @@
     filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
   }
 
-  .transition {
-    transition-property: color, background-color, border-color, outline-color, -webkit-text-decoration-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-  }
-
   @media (hover: hover) {
     .hover\:cursor-pointer:hover {
       cursor: pointer;
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:text-blue-400:hover {
+      color: var(--color-blue-400);
     }
   }
 }
@@ -726,6 +790,7 @@
   --max-h: 810px;
   --product-card-w: 20rem;
   --product-card-h: 23rem;
+  --header-h: 5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -756,6 +821,11 @@ body {
 .product-img-a-lg {
   width: 20rem;
   height: 20rem;
+}
+
+.flex-break {
+  flex-shrink: 0;
+  flex-basis: 100%;
 }
 
 @property --tw-rotate-x {

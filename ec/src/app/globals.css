@@ -9,6 +9,8 @@
 
   --product-card-w: 20rem;
   --product-card-h: 23rem;
+
+  --header-h: 5rem;
 }
 
 @theme inline {
@@ -47,4 +49,10 @@ body {
 .product-img-a-lg {
   width: 20rem;
   height: 20rem;
+}
+
+
+.flex-break{
+  flex-basis: 100%;
+  flex-shrink: 0;
 }
